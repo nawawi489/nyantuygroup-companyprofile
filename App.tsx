@@ -3,6 +3,7 @@ import { Menu, X, ArrowRight, Pizza, Flame, Sandwich, Instagram, Linkedin, Mail,
 import { BRANDS, NAV_LINKS, STATS } from './constants';
 import { Brand } from './types';
 import AIAssistant from './components/AIAssistant';
+import { ASSETS } from './assets/images';
 
 // Reusable Section Components placed in App.tsx for cohesion as requested by file structure guidance
 // (Ideally these would be in components/ folder, but we will inline small ones for the single file requirement limits if needed, 
@@ -11,13 +12,37 @@ import AIAssistant from './components/AIAssistant';
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    // Active Section Observer
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -50% 0px', // Trigger when section is near the center/top
+      threshold: 0.1
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const sections = document.querySelectorAll('section[id], header[id]');
+    sections.forEach(section => observer.observe(section));
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -25,7 +50,7 @@ const App: React.FC = () => {
       
       {/* Navigation */}
       <nav 
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
         }`}
       >
@@ -41,22 +66,29 @@ const App: React.FC = () => {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-8 bg-white/50 backdrop-blur-sm px-6 py-2 rounded-full border border-white/40 shadow-sm">
-            {NAV_LINKS.map(link => (
-              <a 
-                key={link.label} 
-                href={link.href} 
-                className="text-sm font-medium text-gray-700 hover:text-brand-orange transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="hidden lg:flex items-center gap-8 bg-white/80 backdrop-blur-md px-8 py-2.5 rounded-full border border-white/60 shadow-sm transition-all hover:bg-white hover:shadow-md">
+            {NAV_LINKS.map(link => {
+              const isActive = activeSection === link.href.substring(1);
+              return (
+                <a 
+                  key={link.label} 
+                  href={link.href} 
+                  className={`text-sm font-medium transition-all duration-300 ${
+                    isActive 
+                      ? 'text-brand-orange font-bold scale-105' 
+                      : 'text-gray-600 hover:text-brand-orange hover:scale-105'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
 
           <div className="hidden lg:block">
             <a 
               href="#partner"
-              className="bg-brand-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl"
+              className="bg-brand-dark text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Get in Touch
             </a>
@@ -79,7 +111,9 @@ const App: React.FC = () => {
                 key={link.label} 
                 href={link.href} 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-display font-bold text-brand-dark hover:text-brand-orange transition-colors"
+                className={`text-2xl font-display font-bold transition-colors ${
+                   activeSection === link.href.substring(1) ? 'text-brand-orange' : 'text-brand-dark hover:text-brand-orange'
+                }`}
               >
                 {link.label}
               </a>
@@ -210,9 +244,10 @@ const App: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
             <div className="lg:w-1/2 relative">
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-brand-yellow/30 rounded-full -z-10"></div>
+              {/* UPDATED IMAGE FROM ASSETS */}
               <img 
-                src="https://picsum.photos/seed/team/800/600" 
-                alt="Nyantuy Team" 
+                src={ASSETS.storeIllustration}
+                alt="Nyantuy Group Store Front" 
                 className="rounded-[2.5rem] shadow-2xl w-full object-cover aspect-4/3 z-10 relative border-4 border-white" 
               />
               <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-brand-orange/10 rounded-full -z-10"></div>
