@@ -1,5 +1,8 @@
 import { GoogleGenAI } from "@google/genai";
 
+// Declare process for TypeScript since it's injected by Vite define
+declare const process: { env: { API_KEY: string } };
+
 const API_KEY = process.env.API_KEY || '';
 
 // Initialize only if API key exists to prevent immediate errors on load if missing

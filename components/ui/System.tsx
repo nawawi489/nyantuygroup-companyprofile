@@ -1,6 +1,4 @@
-
 import React from 'react';
-import { theme } from '../../theme';
 
 // Button Component
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
