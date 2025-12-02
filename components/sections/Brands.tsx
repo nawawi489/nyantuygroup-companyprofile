@@ -5,7 +5,11 @@ import { BRANDS } from '../../constants';
 import { Section, Card } from '../ui/System';
 import { designSystem } from '../../theme';
 
-const Brands: React.FC = () => {
+interface BrandsProps {
+  onNavigate: (brandId: string) => void;
+}
+
+const Brands: React.FC<BrandsProps> = ({ onNavigate }) => {
   return (
     <Section id="brands" bg="white">
       <div className="text-center mb-16">
@@ -44,7 +48,10 @@ const Brands: React.FC = () => {
                   {brand.description}
                 </p>
                 
-                <button className="text-brand-orange font-bold text-sm uppercase tracking-wide flex items-center gap-2 group-hover:gap-4 transition-all mt-auto">
+                <button 
+                  onClick={() => onNavigate(brand.id)}
+                  className="text-brand-orange font-bold text-sm uppercase tracking-wide flex items-center gap-2 group-hover:gap-4 transition-all mt-auto"
+                >
                   Explore Brand <ArrowRight size={16} />
                 </button>
               </div>
