@@ -71,7 +71,7 @@ const PizzaNyantuyPage: React.FC<Props> = ({ onBack }) => {
       <Section id="menu" bg="offWhite">
         <div className="text-center mb-16">
           <h2 className={designSystem.heading.h2 + " text-brand-dark"}>Signature Menu</h2>
-          <p className={designSystem.text.body + " mt-4"}>Pilihan favorit Nyantuy People</p>
+          <p className={designSystem.text.body + " mt-4"}>Pilihan Favorit Rakyat Nyantuy</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -80,7 +80,10 @@ const PizzaNyantuyPage: React.FC<Props> = ({ onBack }) => {
             { name: "Smooked Beef", price: "IDR 40K", desc: "Pizza Reguler dengan extra topping dan smooked beef", img: ASSETS.menu2 },
             { name: "Juragan Chocomond", price: "IDR 60K", desc: "Coklat lumer, almond, Keju Mozza", img: ASSETS.menu3 }
           ].map((item, idx) => (
-            <Card key={idx} className="group flex flex-col h-full border border-transparent hover:border-brand-orange/20 transition-all p-0 overflow-hidden">
+            <Card 
+              key={idx} 
+              className={`group flex flex-col h-full border border-transparent hover:border-brand-orange/20 transition-all p-0 overflow-hidden ${idx === 2 ? 'md:col-span-2 lg:col-span-1 md:w-2/3 md:mx-auto lg:w-auto' : ''}`}
+            >
                <div className="h-56 overflow-hidden relative">
                 <div className="absolute inset-0 bg-brand-dark/10 group-hover:bg-transparent transition-colors z-10"></div>
                 <img 
@@ -103,19 +106,20 @@ const PizzaNyantuyPage: React.FC<Props> = ({ onBack }) => {
               </div>
             </Card>
           ))}
-          <div className="mt-12 text-center">
-            <a 
-              href="https://wa.me/6285793444353" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-block"
-            >
-              <Button variant="outline" size="lg" className="border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white gap-2">
-                <MessageCircle size={20} />
-                Info Selengkapnya
-              </Button>
-            </a>
-          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <a 
+            href="https://wa.me/6285793444353" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-block"
+          >
+            <Button variant="outline" size="lg" className="border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white gap-2">
+              <MessageCircle size={20} />
+              Info Selengkapnya
+            </Button>
+          </a>
         </div>
       </Section>
 
