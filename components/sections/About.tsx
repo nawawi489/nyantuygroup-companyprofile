@@ -39,7 +39,7 @@ const About: React.FC = () => {
             Berawal dari semangat untuk menghadirkan kuliner berkualitas yang inklusif, Nyantuy Group hadir sebagai rumah bagi brand-brand inovatif. Kami percaya bahwa setiap suapan harus membawa kebahagiaan.
           </p>
           <p className={`${designSystem.text.body} text-lg mb-8`}>
-            Kami tidak hanya membangun bisnis makanan, tetapi juga komunitas. Melalui pendekatan yang <span className="font-bold text-brand-orange">youthful</span> dan adaptif, kami terus berinovasi menciptakan tren rasa baru yang dicintai generasi muda Indonesia.
+            Kami tidak hanya membangun bisnis makanan, tetapi juga komunitas. Melalui pendekatan yang <span className="font-bold text-brand-orange">youthful</span> dan adaptif, kami terus berinovasi menciptakan tren rasa baru yang dicintai semua kalangan.
           </p>
           
           <div className="flex gap-5 items-center bg-white p-4 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-shadow">
@@ -48,7 +48,7 @@ const About: React.FC = () => {
                   <img key={i} className="w-12 h-12 rounded-full border-2 border-white object-cover" src={`https://picsum.photos/seed/${i + 40}/100`} alt={`Member ${i}`} />
                 ))}
                 <div className="w-12 h-12 rounded-full border-2 border-white bg-brand-dark text-white flex items-center justify-center text-xs font-bold">
-                  +50
+                  +15
                 </div>
               </div>
               <div className="flex flex-col justify-center border-l border-gray-200 pl-5">

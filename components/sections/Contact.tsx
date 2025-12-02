@@ -26,7 +26,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Email Us</p>
-                  <p className="font-bold text-lg">partnership@nyantuygroup.com</p>
+                  <p className="font-bold text-lg">mahakaryakulinergemilang@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-5 group cursor-pointer">
@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400 uppercase tracking-wider font-semibold">WhatsApp</p>
-                  <p className="font-bold text-lg">+62 812 3456 7890</p>
+                  <p className="font-bold text-lg">+62 822 5119 6714</p>
                 </div>
               </div>
               <div className="flex items-center gap-5 group cursor-pointer">
@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-400 uppercase tracking-wider font-semibold">Headquarters</p>
-                  <p className="font-bold text-lg">South Jakarta, Indonesia</p>
+                  <p className="font-bold text-lg">Makassar, Indonesia</p>
                 </div>
               </div>
             </div>
@@ -72,7 +72,6 @@ const Contact: React.FC = () => {
                   <select className="w-full bg-brand-offWhite border-2 border-transparent rounded-xl px-4 py-3 focus:outline-none focus:border-brand-orange/50 focus:bg-white transition-all text-gray-600 appearance-none">
                     <option>Franchise Inquiry</option>
                     <option>Supplier Proposal</option>
-                    <option>Media & Press</option>
                     <option>Other</option>
                   </select>
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">

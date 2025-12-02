@@ -43,19 +43,19 @@ export const Button: React.FC<ButtonProps> = ({
 };
 
 // Card Component
-interface CardProps {
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   hoverEffect?: boolean;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className = '', hoverEffect = true }) => {
+export const Card: React.FC<CardProps> = ({ children, className = '', hoverEffect = true, ...props }) => {
   const hoverStyles = hoverEffect 
     ? "hover:shadow-2xl hover:-translate-y-2 transition-all duration-500" 
     : "";
     
   return (
-    <div className={`bg-white rounded-[2rem] shadow-xl shadow-gray-200/50 overflow-hidden ${hoverStyles} ${className}`}>
+    <div className={`bg-white rounded-[2rem] shadow-xl shadow-gray-200/50 overflow-hidden ${hoverStyles} ${className}`} {...props}>
       {children}
     </div>
   );
